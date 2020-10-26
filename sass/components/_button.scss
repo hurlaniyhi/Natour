@@ -1,0 +1,124 @@
+.btn {
+    &,
+    &:link,
+    &:visited {
+    font-size: $default-font-size;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    position: relative;
+    //backface-visibility: hidden;
+    
+  
+    /*Animation with transition*/
+    transition: all .2s;
+    
+    /* we can specify the properties we want to animate or apply it to all. transition is always on the initial state.
+       that is, not hovering or active state*/
+
+
+       //change for <button> element
+       border: none;
+       cursor: pointer;
+    }
+  
+    &:hover {
+      transform: translateY(-0.3rem);
+      /*the element moves up on hover. since by default, css is from top to bottom
+        so - will be moving from bottom to top*/
+      box-shadow: 0 1rem 2rem rgba($color-black, .2);
+      /* The first property is the x and is zero since we dont want any shadow in the x axis
+        the second property is the y axis. the third property is how blur the shadow should be and the fourth
+        property is the color*/
+  
+  
+        &::after {
+          transform: scaleX(1.4) scaleY(1.6); /*scale double the size of the element it is applied to*/
+          opacity: 0;
+        }
+        
+    }
+    
+    &--animated {
+      animation: moveInBottom 1s ease-out .75s;
+      animation-fill-mode: backwards;
+    }
+    
+    &:active, &:focus {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+        outline: none;
+        /* we reduce the shadow and the blur when the element is active*/
+      }
+    
+    &--white {
+      background-color: $color-white;
+      color:$color-grey-dark;
+  
+      &::after {
+        background-color: $color-white;
+      }
+    }
+
+    &--green {
+      background-color: $color-primary;
+      color:$color-white;
+      //backface-visibility: hidden;
+  
+      &::after {
+        background-color: $color-white;
+      }
+    }
+  
+  
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: all .4s;
+    }
+  
+     /*
+  ::after
+  
+  adds an element exactly like the element we applied it to and put it behind the element. when we hover out of the 
+  element, the hidden pseudo-element goes back behind the button. to use it, we must specify the content 
+  which can be empty. we also should specify the display. we also give it height and width of 100% to look like 
+  the original element
+  
+  */
+  
+  }
+  
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all .2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, .15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,76 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both
+    }
+}
+
+@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+// MEDIA QUERY MANAGER
+
+
+/*
+0 - 600px:   Phone
+600 - 900px:  Tablet portrait
+900 - 1200px:  Tablet landscape
+1200 - 1800px:  this is where our normal styles apply
+1800 - + :  Big desktop
+
+
+
+@mixin respond-phone {
+    @media (max-width: 600px) {  @content };
+   // @content allows us to pass a block of codes into mixin 
+}
+
+we can now call the mixin anywhere by using "@include respond-phone {font-size: 20px}". that is what is inside the
+curly braces will be passed to the mixin media query's curly braces to replace @content.
+
+
+
+
+//Better Method
+
+$breakpoints argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px...i.e 600px will be equal to 37.5em (600/16)
+*/
+
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 37.5em) {@content};   //600px
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 56.25em) {@content};   //900px
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 75em) {@content};    //1200px
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (min-width: 112.5em) {@content};   //1800px
+    }
+}
+
+// the mixin above requires a parameter to passed to it. when it is called,the mixin will check if the 
+// parameter passed is equal phone, if it is, it will give the content(the styles) to the media query with 
+// max-width 600px. if it is not equal to phone, it will check other conditions
+
+// we can call the above mixin anywhere using "@include respond(phone) {font-size: 20px}"
+
+
+

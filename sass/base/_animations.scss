@@ -1,0 +1,68 @@
+/* Animation 
+ two types of animation...using transition and the animation definition with @keyframes
+
+  We use the keyword ""@keyframes  name-we-want-for-the-animation { 0% {what happen before the page render}
+80% {what happen when the page is 80% loaded} 100%{what happens when the page finish loading}}
+
+for browser property, its best to only animate two different properties: opacity and transform
+*/
+
+
+
+@keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(
+        -10rem
+      ); /*we want to animate in the x direction. negaive value 
+          means it goes to left (i.e 0 opacity aplies to the right) and positive means it goes to the right*/
+    }
+  
+    80% {
+      transform: translateX(1rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0); /*to look the way it should look*/
+    }
+  }
+  
+  @keyframes moveInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(10rem); 
+    }
+  
+    80% {
+      transform: translateX(-1rem);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0); /*to look the way it should look*/
+    }
+  }
+  
+  /*We can use apply the animation we defined on any element and also specified when we want it to be applied.
+  like applying the animation to a particular element when we hover on element
+  i.e  .classname:hover{ animation: nameOfAnimation duration timingFunction(e.g ease-out)}
+  */
+  
+  
+  @keyframes moveInBottom {
+      0% {
+        opacity: 0;
+        transform: translateY(5rem); 
+      }
+    
+      80% {
+        transform: translateY(-1rem);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translate(0); /*to look the way it should look*/
+      }
+    }
+

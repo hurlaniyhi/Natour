@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;  /* all element will have the box-sizing value that is set in the body*/
+  
+}
+
+html {
+  font-size: 62.5%;  
+  /*
+  we want 1 rem to be equal 10px....that is 16px(default)/ Xpx(that will be equal 1rem * 100 = X%
+  therefore, font-size = X%
+  
+  so the default which is 16px == 100%, so 10px == 16/10 * 100 which == 62.5% 
+  so with font-size = 62.5%, 1rem = 10px.
+  */
+
+
+  @include respond(tab-land) {  //600
+    font-size: 56.25%;  // 1rem = 9px, 9/16 * 100 = 56.25%
+  }
+
+  @include respond(tab-port) {  //900
+    font-size: 50%;  // 1rem = 8px, 8/16 * 100 = 50%
+  }
+
+  @include respond(big-desktop) {  //1800+
+    font-size: 75%;  // 1rem = 12px, 12/16 * 100 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box; /* will not allow the border value or padding value to be added to the width of an element */
+  padding: 3rem;  /* i.e 30px divided by 10 */
+
+  @include respond(tab-port) {  //900
+    padding: 0;
+  }
+}
+
+::selection {  // i.e what happens when highlight things like text
+  background-color: $color-primary;
+  color: $color-white;
+}
+
