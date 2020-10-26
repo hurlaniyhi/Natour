@@ -1,0 +1,77 @@
+
+// we put this "compile:sass": "node-sass sass/main.scss css/style.css -w" in our script property inside package.json 
+// so as to compile our sass code and transform it to css and automatically put the compile sass in the css file.
+// note that we specify our sass code location and also our css file location. the -w is to watching the sass file
+// and update the css file as soon as the sass code changes. to start the compilation, we use npm run compile:sass
+// on our terminal. keep that terminal running so that the update on the sass file will reflect on the css file.
+
+// to automatically reload our page once we make any changes in our code, we install live-server using
+// npm install live-server -g  or sudo npm install live-server -g. open a new command line, go to the root folder
+// i.e (Natours) and type live-server. it will automatically run the project on the browser using local host. ensure 
+// you leave that terminal running as thats the server that now run your project.
+
+// partials are the scss files that are inside a folder of the sass folder. they always start with underscore(_) 
+// but we dont include the underscore when importing them.
+
+// components (file inside the component folder) are the building blocks which are independent and reusable
+// everywhere across our website
+
+// the layout is what holds all of the components together.
+
+//base folder consist of files that style the html tag and the body tag and the universal selector
+
+// files inside the pages folder are for given a particular style to a particular page
+// abstract folder consist of files that will not output any css (variables, mixins, functions, extends e.t.c.)
+
+
+@import "abstract/functions"; 
+@import "abstract/mixins"; 
+@import "abstract/variables";  
+
+@import "base/base";
+@import "base/animations";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/button";
+@import "components/card";
+@import "components/composition";
+@import "components/feature-box";
+@import "components/form";
+@import "components/popup";
+@import "components/story";  
+@import "components/bg-video";
+
+@import "layout/footer";
+@import "layout/header";
+@import "layout/grid";
+@import "layout/navigation";
+
+@import "pages/home";
+
+
+
+
+
+
+// ICONS
+// goto to linea.io, click on download all sets or download all icons.
+// unzip the file and you will see some folders. click on the -basic and you will see some files.
+// click on the _ICONFONT folder. we want the fonts folder and the styles.css
+// copy the fonts folder and the styles.css and paste them in your project's css folder. you may want to rename the
+// styles.css you copied to icon-font.css after pasting.
+// then include the icon-font.css in your html file. i.e <link rel="stylesheet" href="css/icon-font.css"> just before
+// our project original style.css.
+// to use any of the icon, in the _ICONFONT folder, open the file named icons-reference.html to see the name given to
+// all the icons. in your html, you can now have an element(i is preferred) and give it a class of icon-nameOfIcon.
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,83 @@
+.header {
+    height: 85vh;
+  
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.7),
+        rgba($color-primary-dark, 0.7)
+      ),
+      url("../img/hero-small.jpg");
+    position: relative;
+    /* To add  gradient to the background image, we use the linear gradient to create a 
+      background image simply colors and the other background image (hero.jpg) will be below the color background-img.
+      we chose that the gradient should go from left to right, we could also say to top, to bottom or to left or 
+      specifying two direction (e.g to right bottom).
+      for the gradient colors, we may want to use the rgba so that we have power over the opacity in making the
+      object below the gradient color visible */
+  
+    background-size: cover; /*enables the background image to fit in the element*/
+    background-position: top;
+    /*ensures that the image did not get cropped(cut) at the top when you try resize from the browser.
+      the top of the image stay the same. we can give it the value of top or bottom or center */
+  
+    
+
+      @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)){
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        /* clip path is used to cut out some paths of an element and display the remaining path 
+          this (clip-path: polygon(50% 0, 100% 100%, 0 100%)) will make a triangle out of an element it is applied to.
+      
+          visit https://bennettfeely.com/clippy/   to see alot of shape you may want your clip to look like and copy the 
+          css clip-path value for that.
+          */
+          height: 95vh;
+      }
+
+      // .....................................................
+      // responsive image
+
+      @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), 
+                  only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), 
+                  only screen and (min-width: 125em){  // the , means or
+        background-image: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light, 0.7),
+            rgba($color-primary-dark, 0.7)
+          ),
+        url("../img/hero.jpg");
+      }
+
+      // ......................................................
+
+      @include respond(phone) {  //600
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+       }
+  
+      &__logo-box {
+        position: absolute; 
+        top: 4rem;
+        left: 4rem;
+      }
+  
+      &__logo {
+        height: 3.5rem; /* once you specify the height, the browser will figure out the width or vice-versa*/
+      }
+  
+      &__text-box {
+        /* we want to center the div */
+        position: absolute;
+        top: 40%; /*the top of the div starts after 50% distance from the top*/
+        left: 50%; /*the top of the div starts after 50% distance from the left*/
+        /* so from the above, the div is still not centered but the started from the middle
+          so we need to translate that to make the center of the div in the center of the screen.
+          to do that, we need to translate the above info */
+        transform: translate(-50%, -50%);
+        /*that is, for x part, we just make the div go back 50% to the left, also for y, we make it go back 50% to the 
+          top */
+        text-align: center;
+      }
+  
+  }
+  
